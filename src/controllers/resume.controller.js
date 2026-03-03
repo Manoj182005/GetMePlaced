@@ -1,4 +1,3 @@
-const fs = require("fs");
 const pdf = require("pdf-parse");
 const { extractKeywords } = require("../utils/keywordExtractor");
 
@@ -11,9 +10,7 @@ exports.uploadResume = async (req, res) => {
             });
         }
 
-        const dataBuffer = fs.readFileSync(req.file.path);
-
-        const pdfData = await pdf(dataBuffer);
+        const pdfData = await pdf(req.file.buffer);
 
         const extractedText = pdfData.text;
 
@@ -26,6 +23,7 @@ exports.uploadResume = async (req, res) => {
         });
 
     } catch (error) {
+        console.error(error);
         return res.status(500).json({
             success: false,
             message: error.message
