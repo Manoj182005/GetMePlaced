@@ -9,10 +9,14 @@
     "dev": "nodemon src/index.js"
   },
   "dependencies": {
+    "@langchain/openai": "^1.2.12",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^4.19.2",
+    "langchain": "^1.2.29",
+    "mongoose": "^9.2.4",
     "multer": "^2.1.0",
+    "openai": "^6.25.0",
     "pdf-parse": "^1.1.1"
   },
   "devDependencies": {

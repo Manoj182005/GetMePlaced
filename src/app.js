@@ -1,6 +1,10 @@
+import interviewRoutes from "./routes/interview.routes.js";
+
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
+
 
 app.use(cors());
 app.use(express.json());
@@ -26,5 +30,6 @@ app.get("/ping", (req, res) => {
 
 
 app.use("/api/v1/resume", resumeRoutes);
+app.use("/api/interview", interviewRoutes);
 
 module.exports = app;
