@@ -1,8 +1,9 @@
-const pdf = require("pdf-parse");
-const { extractKeywords } = require("../utils/keywordExtractor");
+import pdf from "pdf-parse";
+import { extractKeywords } from "../utils/keywordExtractor.js";
 
-exports.uploadResume = async (req, res) => {
+export const uploadResume = async (req, res) => {
     try {
+
         if (!req.file) {
             return res.status(400).json({
                 success: false,
@@ -23,10 +24,13 @@ exports.uploadResume = async (req, res) => {
         });
 
     } catch (error) {
+
         console.error(error);
+
         return res.status(500).json({
             success: false,
             message: error.message
         });
+
     }
 };

@@ -1,18 +1,16 @@
-exports.extractKeywords = (text) => {
+export const extractKeywords = (text) => {
 
-    // Convert to lowercase
     const cleanText = text
         .toLowerCase()
-        .replace(/[^a-zA-Z\s]/g, "")  // remove numbers & symbols
+        .replace(/[^a-zA-Z\s]/g, "")
         .split(/\s+/);
 
-    // Common English stopwords
     const stopWords = new Set([
-        "the", "and", "is", "in", "to", "of", "for", "on",
-        "with", "as", "by", "an", "be", "are", "this",
-        "that", "from", "at", "or", "it", "a", "was",
-        "i", "have", "has", "had", "will", "their",
-        "my", "we", "they", "our"
+        "the","and","is","in","to","of","for","on",
+        "with","as","by","an","be","are","this",
+        "that","from","at","or","it","a","was",
+        "i","have","has","had","will","their",
+        "my","we","they","our"
     ]);
 
     const wordFrequency = {};
@@ -23,7 +21,6 @@ exports.extractKeywords = (text) => {
         }
     }
 
-    // Sort by frequency
     const sortedWords = Object.entries(wordFrequency)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 10)

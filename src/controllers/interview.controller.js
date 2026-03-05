@@ -1,38 +1,49 @@
-import Chat from "../models/chat.model.js";
 import { generateInterviewResponse } from "../services/ai.service.js";
 
+const chatSessions = {};
+
 export const handleInterviewChat = async (req, res) => {
+
   const { userId, message } = req.body;
 
-  let chat = await Chat.findOne({ userId });
-
-  if (!chat) {
-    chat = await Chat.create({
-      userId,
-      messages: []
-    });
+  if (!chatSessions[userId]) {
+    chatSessions[userId] = [];
   }
+
+  const chatHistory = chatSessions[userId];
 
   const systemPrompt = `
 You are a strict but fair technical interviewer.
+
 Ask one question at a time.
-Evaluate answers.
+
+Evaluate candidate answers.
+
 Focus on resume skills.
 `;
 
-  const resumeKeywords = "Node.js, React, MongoDB"; // fetch from DB
+  const resumeKeywords = "Node.js, React, MongoDB";
 
   const aiReply = await generateInterviewResponse({
     systemPrompt,
     resumeKeywords,
-    chatHistory: chat.messages,
+    chatHistory,
     userMessage: message
   });
 
-  chat.messages.push({ role: "user", content: message });
-  chat.messages.push({ role: "assistant", content: aiReply });
+  chatSessions[userId].push({
+    role: "user",
+    content: message
+  });
 
-  await chat.save();
+  chatSessions[userId].push({
+    role: "assistant",
+    content: aiReply
+  });
 
-  res.json({ reply: aiReply });
+  res.json({
+    success: true,
+    reply: aiReply
+  });
+
 };

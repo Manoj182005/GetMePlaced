@@ -1,5 +1,4 @@
 import { ChatOpenAI } from "@langchain/openai";
-import { HumanMessage, AIMessage } from "@langchain/core/messages";
 
 const model = new ChatOpenAI({
   model: "gpt-4o-mini",
@@ -13,14 +12,19 @@ export const generateInterviewResponse = async ({
   chatHistory,
   userMessage
 }) => {
+
   const messages = [
     {
       role: "system",
       content: `${systemPrompt}
-      Candidate Resume Keywords: ${resumeKeywords}`
+
+Candidate Resume Keywords: ${resumeKeywords}`
     },
     ...chatHistory,
-    { role: "user", content: userMessage }
+    {
+      role: "user",
+      content: userMessage
+    }
   ];
 
   const response = await model.invoke(messages);

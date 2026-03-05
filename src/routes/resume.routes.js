@@ -1,6 +1,6 @@
-const express = require("express");
-const multer = require("multer");
-const { uploadResume } = require("../controllers/resume.controller");
+import express from "express";
+import multer from "multer";
+import { uploadResume } from "../controllers/resume.controller.js";
 
 const router = express.Router();
 
@@ -16,4 +16,4 @@ const upload = multer({
 
 router.post("/upload", upload.single("resume"), uploadResume);
 
-module.exports = router;
+export default router;
