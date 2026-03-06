@@ -6,6 +6,13 @@ export const handleInterviewChat = async (req, res) => {
 
   const { userId, message } = req.body;
 
+  if (!userId || !message) {
+    return res.status(400).json({
+      success:false,
+      message:"userId and message required"
+    });
+  }
+
   if (!chatSessions[userId]) {
     chatSessions[userId] = [];
   }
@@ -13,13 +20,13 @@ export const handleInterviewChat = async (req, res) => {
   const chatHistory = chatSessions[userId];
 
   const systemPrompt = `
-You are a strict but fair technical interviewer.
+You are an experienced technical interviewer.
 
-Ask one question at a time.
-
-Evaluate candidate answers.
-
-Focus on resume skills.
+Rules:
+- Ask one question at a time
+- Evaluate candidate answers
+- Ask follow-up questions
+- Focus on resume skills
 `;
 
   const resumeKeywords = "Node.js, React, MongoDB";

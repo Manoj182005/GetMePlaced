@@ -13,21 +13,31 @@ export const generateInterviewResponse = async ({
   userMessage
 }) => {
 
-  const messages = [
-    {
-      role: "system",
-      content: `${systemPrompt}
+  try {
+
+    const messages = [
+      {
+        role: "system",
+        content: `${systemPrompt}
 
 Candidate Resume Keywords: ${resumeKeywords}`
-    },
-    ...chatHistory,
-    {
-      role: "user",
-      content: userMessage
-    }
-  ];
+      },
+      ...chatHistory,
+      {
+        role: "user",
+        content: userMessage
+      }
+    ];
 
-  const response = await model.invoke(messages);
+    const response = await model.invoke(messages);
 
-  return response.content;
+    return response.content;
+
+  } catch (error) {
+
+    console.error("AI Error:", error);
+    return "AI failed to respond.";
+
+  }
+
 };
