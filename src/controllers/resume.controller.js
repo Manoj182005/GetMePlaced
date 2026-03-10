@@ -1,7 +1,5 @@
-import pkg from "pdf-parse";
+import pdf from "pdf-parse";
 import { extractKeywords } from "../utils/keywordExtractor.js";
-
-const pdf = pkg;
 
 export const uploadResume = async (req, res) => {
   try {

@@ -1,35 +1,75 @@
-import { ChatOpenAI } from "@langchain/openai";
+import dotenv from "dotenv";
+dotenv.config();
 
-const model = new ChatOpenAI({
-  model: "gpt-4o-mini",
-  temperature: 0.7,
-  openAIApiKey: process.env.OPENAI_API_KEY
+import { ChatGroq } from "@langchain/groq";
+import { RunnableWithMessageHistory } from "@langchain/core/runnables";
+import { InMemoryChatMessageHistory } from "@langchain/core/chat_history";
+import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts";
+
+import { SYSTEM_PROMPT } from "../prompts/system.prompt.js";
+import { getQuestionBank } from "../data/questionBank.js";
+
+// Initialize Model
+const model = new ChatGroq({
+  apiKey: process.env.GROQ_API_KEY,
+  model: "llama-3.1-8b-instant",
+  temperature: 0.7
+});
+
+// Load Question Bank
+const questionBank = getQuestionBank();
+
+// Prompt Template
+const prompt = ChatPromptTemplate.fromMessages([
+  ["system", SYSTEM_PROMPT],
+  new MessagesPlaceholder("history"),
+  ["human", "{input}"]
+]);
+
+// Connect Prompt → Model
+const chainWithPrompt = prompt.pipe(model);
+
+// Memory store
+const messageHistories = {};
+
+// Get session memory
+const getMessageHistory = (sessionId) => {
+  if (!messageHistories[sessionId]) {
+    messageHistories[sessionId] = new InMemoryChatMessageHistory();
+  }
+  return messageHistories[sessionId];
+};
+
+// Chain with memory
+const chain = new RunnableWithMessageHistory({
+  runnable: chainWithPrompt,
+  getMessageHistory,
+  inputMessagesKey: "input",
+  historyMessagesKey: "history"
 });
 
 export const generateInterviewResponse = async ({
-  systemPrompt,
+  userId,
   resumeKeywords,
-  chatHistory,
   userMessage
 }) => {
-
   try {
 
-    const messages = [
-      {
-        role: "system",
-        content: `${systemPrompt}
+    const input = `
+Candidate Resume Keywords:
+${resumeKeywords}
 
-Candidate Resume Keywords: ${resumeKeywords}`
+User Message:
+${userMessage}
+`;
+
+    const response = await chain.invoke(
+      {
+        input,
+        QuestionsForGPT: questionBank   // 🔥 FIX HERE
       },
-      ...chatHistory,
-      {
-        role: "user",
-        content: userMessage
-      }
-    ];
-
-    const response = await model.invoke(messages);
+      { configurable: { sessionId: userId } }
+    );
 
     return response.content;
 
@@ -39,5 +79,4 @@ Candidate Resume Keywords: ${resumeKeywords}`
     return "AI failed to respond.";
 
   }
-
 };

@@ -31,12 +31,11 @@ Rules:
 
   const resumeKeywords = "Node.js, React, MongoDB";
 
-  const aiReply = await generateInterviewResponse({
-    systemPrompt,
-    resumeKeywords,
-    chatHistory,
-    userMessage: message
-  });
+const aiReply = await generateInterviewResponse({
+  userId,
+  resumeKeywords,
+  userMessage: message
+});
 
   chatSessions[userId].push({
     role: "user",
