@@ -71,7 +71,10 @@ ${userMessage}
       { configurable: { sessionId: userId } }
     );
 
-    return response.content;
+    return {
+  type: "chat",
+  reply: response.content
+};
 
   } catch (error) {
 
