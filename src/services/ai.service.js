@@ -66,7 +66,7 @@ ${userMessage}
     const response = await chain.invoke(
       {
         input,
-        QuestionsForGPT: questionBank   // 🔥 FIX HERE
+        QuestionsForGPT: questionBank   
       },
       { configurable: { sessionId: userId } }
     );
