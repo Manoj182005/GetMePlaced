@@ -40,7 +40,7 @@ const getMessageHistory = (sessionId) => {
   return messageHistories[sessionId];
 };
 
-// Chain with memory
+
 const chain = new RunnableWithMessageHistory({
   runnable: chainWithPrompt,
   getMessageHistory,
