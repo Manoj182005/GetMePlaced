@@ -26,10 +26,10 @@ const prompt = ChatPromptTemplate.fromMessages([
   ["human", "{input}"]
 ]);
 
-// Connect Prompt → Model
+
 const chainWithPrompt = prompt.pipe(model);
 
-// Memory store
+
 const messageHistories = {};
 
 // Get session memory
