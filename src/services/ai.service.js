@@ -19,7 +19,6 @@ const model = new ChatGroq({
 // Load Question Bank
 const questionBank = getQuestionBank();
 
-// Prompt Template
 const prompt = ChatPromptTemplate.fromMessages([
   ["system", SYSTEM_PROMPT],
   new MessagesPlaceholder("history"),
