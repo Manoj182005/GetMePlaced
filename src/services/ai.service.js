@@ -9,14 +9,14 @@ import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts
 import { SYSTEM_PROMPT } from "../prompts/system.prompt.js";
 import { getQuestionBank } from "../data/questionBank.js";
 
-// Initialize Model
+
 const model = new ChatGroq({
   apiKey: process.env.GROQ_API_KEY,
   model: "llama-3.1-8b-instant",
   temperature: 0.7
 });
 
-// Load Question Bank
+
 const questionBank = getQuestionBank();
 
 const prompt = ChatPromptTemplate.fromMessages([
