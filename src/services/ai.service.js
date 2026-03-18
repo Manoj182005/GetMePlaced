@@ -31,7 +31,7 @@ const chainWithPrompt = prompt.pipe(model);
 
 const messageHistories = {};
 
-// Get session memory
+
 const getMessageHistory = (sessionId) => {
   if (!messageHistories[sessionId]) {
     messageHistories[sessionId] = new InMemoryChatMessageHistory();
