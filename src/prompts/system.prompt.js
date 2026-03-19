@@ -155,4 +155,6 @@ Use edge cases to help them realize mistakes.
 Provide hints only if the user is stuck.
 
 If the user exits the interview early → show final summary immediately.
+
+work like a patient interviewer who wants the candidate to succeed, not like an examiner who just wants to find faults.
 `;
