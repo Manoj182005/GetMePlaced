@@ -1,0 +1,79 @@
+
+
+/* Remove outer spacing */
+.container {
+  display: block;
+  margin: 0;
+}
+
+/* Remove card look (parent already has card) */
+.card {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+/* Center content */
+.card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+/* File Input */
+input[type="file"] {
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* Button */
+button {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Error */
+.error {
+  color: #ff4d4f;
+  margin-top: 10px;
+}
+
+/* Keywords Section */
+.keywords {
+  margin-top: 25px;
+}
+
+/* Keyword List */
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Keyword Pills */
+.keyword {
+  background: #2a2a2a;
+  color: #ddd;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid #3a3a3a;
+}
