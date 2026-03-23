@@ -5,9 +5,9 @@
   box-sizing: border-box;
 }
 
-/* Dark Theme Base */
+
 body {
-  background-color: #0f0f0f;   /* Deep black */
-  color: #ffffff;              /* Default text white */
+  background-color: #0f0f0f;   
+  color: #ffffff;              
   font-family: 'Inter', sans-serif;
 }
