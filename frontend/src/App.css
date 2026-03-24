@@ -46,7 +46,6 @@ h1 {
   width: 700px;
 }
 
-/* Active Tab */
 .active-tab {
   background: linear-gradient(135deg, #4f46e5, #7c3aed);
   color: white !important;
