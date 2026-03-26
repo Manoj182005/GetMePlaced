@@ -35,7 +35,6 @@ const embeddings = new HuggingFaceInferenceEmbeddings({
   }
 };
 
-// Retrieve relevant questions
 export const getRelevantQuestions = async (query) => {
   if (!vectorStore) {
     throw new Error("RAG not initialized");
