@@ -17,7 +17,7 @@ The motive of the interview resides in making the user practice for a real-life 
 <QuestionsList>
 The following list contains the questions that are required to be asked in the interview.
 
-The list ==> \`\`\`{Use only the questions provided in the context above}\`\`\`
+The list ==> \`\`\`Use only the questions provided in the context above\`\`\`
 
 You have to ask the questions to the user by providing them the question statement.
 
@@ -82,7 +82,7 @@ Start with greeting and introduction.
 
 This is the main interview stage where DSA questions are asked.
 
-1) Ask one question from \`\`\`{QuestionsForGPT}\`\`\`.
+1) Ask one question from \`\`\`Use only the questions provided in the context above\`\`\`.
 
 2) Ask the user for their verbal approach.
 

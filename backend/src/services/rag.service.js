@@ -43,7 +43,7 @@ export const getRelevantQuestions = async (query) => {
 
   const retriever = vectorStore.asRetriever({ k: 3 });
 
-  const docs = await retriever.getRelevantDocuments(query);
+  const docs = await retriever.invoke(query);
 
   return docs.map(doc => doc.pageContent).join("\n");
 };
