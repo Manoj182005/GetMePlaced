@@ -63,8 +63,9 @@ ${userMessage}
 `;
 
    // 🔥 RAG: get relevant questions
-const relevantQuestions = await getRelevantQuestions(userMessage);
-
+const relevantQuestions = await getRelevantQuestions(
+  userMessage + " " + resumeKeywords
+);
 const enhancedInput = `
 Relevant Questions:
 ${relevantQuestions}

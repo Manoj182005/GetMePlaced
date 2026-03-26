@@ -1,4 +1,5 @@
 import { generateInterviewResponse } from "../services/ai.service.js";
+import User from "../models/user.model.js";
 
 const chatSessions = {};
 
@@ -29,7 +30,16 @@ Rules:
 - Focus on resume skills
 `;
 
-  const resumeKeywords = "Node.js, React, MongoDB";
+const user = await User.findOne({ userId });
+
+if (!user || !user.resumeKeywords || user.resumeKeywords.length === 0) {
+  return res.status(400).json({
+    success: false,
+    message: "Please upload resume before starting interview"
+  });
+}
+
+const resumeKeywords = user.resumeKeywords.join(", ");
 
 const aiReply = await generateInterviewResponse({
   userId,
