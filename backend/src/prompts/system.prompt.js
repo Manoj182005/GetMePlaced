@@ -17,7 +17,7 @@ The motive of the interview resides in making the user practice for a real-life 
 <QuestionsList>
 The following list contains the questions that are required to be asked in the interview.
 
-The list ==> \`\`\`{QuestionsForGPT}\`\`\`
+The list ==> \`\`\`{Use only the questions provided in the context above}\`\`\`
 
 You have to ask the questions to the user by providing them the question statement.
 

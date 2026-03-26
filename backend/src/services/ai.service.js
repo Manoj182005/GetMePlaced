@@ -8,6 +8,7 @@ import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts
 
 import { SYSTEM_PROMPT } from "../prompts/system.prompt.js";
 import { getQuestionBank } from "../data/questionBank.js";
+import { getRelevantQuestions } from "./rag.service.js";
 
 
 const model = new ChatGroq({
@@ -15,7 +16,7 @@ const model = new ChatGroq({
   model: "llama-3.1-8b-instant",
   temperature: 0.7
 });
-
+// Initialize the question bank
 
 const questionBank = getQuestionBank();
 
@@ -30,8 +31,7 @@ const chainWithPrompt = prompt.pipe(model);
 
 
 const messageHistories = {};
-
-
+// Function to get or create message history for a session
 const getMessageHistory = (sessionId) => {
   if (!messageHistories[sessionId]) {
     messageHistories[sessionId] = new InMemoryChatMessageHistory();
@@ -62,13 +62,26 @@ User Message:
 ${userMessage}
 `;
 
-    const response = await chain.invoke(
-      {
-        input,
-        QuestionsForGPT: questionBank   
-      },
-      { configurable: { sessionId: userId } }
-    );
+   // 🔥 RAG: get relevant questions
+const relevantQuestions = await getRelevantQuestions(userMessage);
+
+const enhancedInput = `
+Relevant Questions:
+${relevantQuestions}
+
+Candidate Resume Keywords:
+${resumeKeywords}
+
+User Message:
+${userMessage}
+`;
+
+const response = await chain.invoke(
+  {
+    input: enhancedInput
+  },
+  { configurable: { sessionId: userId } }
+);
 
     return {
   type: "chat",

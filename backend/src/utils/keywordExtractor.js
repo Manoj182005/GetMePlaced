@@ -5,9 +5,10 @@ export const extractKeywords = (text) => {
         .replace(/[^a-zA-Z\s]/g, "")
         .split(/\s+/);
 
-    const stopWords = new Set([
+    
+        const stopWords = new Set([
         "the","and","is","in","to","of","for","on",
-        "with","as","by","an","be","are","this",
+        "with","those","as","by","an","be","are","this",
         "that","from","at","or","it","a","was",
         "i","have","has","had","will","their",
         "my","we","they","our"
