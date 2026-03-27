@@ -66,6 +66,10 @@ ${userMessage}
 const relevantQuestions = await getRelevantQuestions(
   userMessage + " " + resumeKeywords
 );
+console.log("🔥 Resume Keywords:", resumeKeywords);
+console.log("🔥 User Message:", userMessage);
+console.log("🔥 RAG Query:", userMessage + " " + resumeKeywords);
+console.log("🔥 Relevant Questions:", relevantQuestions);
 const enhancedInput = `
 Relevant Questions:
 ${relevantQuestions}

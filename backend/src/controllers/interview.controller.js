@@ -40,6 +40,7 @@ if (!user || !user.resumeKeywords || user.resumeKeywords.length === 0) {
 }
 
 const resumeKeywords = user.resumeKeywords.join(", ");
+console.log("✅ Resume Keywords from DB:", resumeKeywords);
 
 const aiReply = await generateInterviewResponse({
   userId,
