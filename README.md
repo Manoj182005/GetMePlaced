@@ -41,4 +41,30 @@ The system extracts key skills from uploaded resumes and uses them to simulate a
 
 ---
 
+
+---
+
+## 🔄 How It Works
+
+### 1. Resume Upload
+- User uploads a PDF resume  
+- Backend extracts text and identifies key skills  
+- Keywords are stored in MongoDB  
+
+### 2. AI Interview Chat
+- User sends a message  
+- Backend retrieves stored resume keywords  
+- LangChain constructs prompt with context  
+- LLM generates interview question or feedback  
+
+### 3. Response Delivery
+- AI response is sent back to frontend  
+- Displayed in chat interface  
+
+---
+
+## 📁 Project Structure
+
+### 📦 Backend
+
 ## ⚙️ System Architecture
