@@ -22,6 +22,7 @@ const ResumeUpload = () => {
 
     const formData = new FormData();
     formData.append("resume", file);
+    formData.append("userId", "123"); // ✅ VERY IMPORTANT
 
     try {
       setLoading(true);
@@ -29,16 +30,13 @@ const ResumeUpload = () => {
 
       const response = await axios.post(
         "http://localhost:5000/api/v1/resume/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        formData
       );
 
       setKeywords(response.data.keywords);
+
     } catch (err) {
+      console.error("UPLOAD ERROR:", err.response?.data || err.message);
       setError("Failed to parse resume. Please try again.");
     } finally {
       setLoading(false);
@@ -51,7 +49,11 @@ const ResumeUpload = () => {
         <h1>🚀 GetMePlaced</h1>
         <p className="subtitle">Upload your resume and extract top keywords</p>
 
-        <input type="file" accept="application/pdf" onChange={handleFileChange} />
+        <input
+          type="file"
+          accept="application/pdf"
+          onChange={handleFileChange}
+        />
 
         <button onClick={handleUpload}>
           {loading ? "Processing..." : "Upload & Extract"}
