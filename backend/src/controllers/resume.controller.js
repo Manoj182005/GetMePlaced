@@ -19,7 +19,7 @@ export const uploadResume = async (req, res) => {
 
     const keywords = extractKeywords(extractedText);
 
-    // 🔥 SAVE TO DB
+    
     await User.findOneAndUpdate(
       { userId },
       { resumeKeywords: keywords },
