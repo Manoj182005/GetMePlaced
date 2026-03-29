@@ -72,6 +72,6 @@ Implement Red Black Tree | 4 | Rotations | Color flipping | Self balancing
 
 Implement suffix array | 5 | Suffix tree | Sorting | Binary search
 
-Implement B Tree | 5 | Splitting and merging | Self balancing tree | Range queries
+Implement B Tree | 5 | Splitting and merging | Self balancing tree | Range queries | sort and mergeing
 `;
 }
