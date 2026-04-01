@@ -140,6 +140,7 @@ Recommendation for next round
 Improvement Suggestions
 Tone of the user
 Overall behavior in interview
+final remarks
 \`\`\`
 
 Then ask the user if they have any questions about their interview, and answer them patiently and clearly.
