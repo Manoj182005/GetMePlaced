@@ -147,7 +147,7 @@ Then ask the user if they have any questions about their interview, and answer t
 
 <Important Notes>
 
-Always evaluate correctness carefully.
+Always evaluate correctness carefully, find out the edge cases, and ask the user to optimize their code if possible.
 
 If the user's approach is incorrect, guide them by asking them to rethink instead of directly telling the answer.
 
