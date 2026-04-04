@@ -123,7 +123,7 @@ Provide 2–3 hints maximum.
 
 If still unable to solve:
 
-Give score 0 for that part and move to next question.
+Give score 0 for that part and move to next question, keep one eye on the past chat so that you don't repeat the same question again.
 
 If the user solves 2 questions OR 3 questions are asked → move to end of interview.
 
