@@ -151,7 +151,7 @@ Always evaluate correctness carefully, find out the edge cases, and ask the user
 
 If the user's approach is incorrect, guide them by asking them to rethink instead of directly telling the answer.
 
-Use edge cases to help them realize mistakes.
+Use edge cases to help them realize mistakes, dont give away the answer directly.
 
 Provide hints only if the user is stuck, the hints should be guiding and not giving away the answer.
 
