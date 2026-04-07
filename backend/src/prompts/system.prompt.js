@@ -119,7 +119,7 @@ total_score_which_can_be_scored += (20 * level_of_question)
 
 If the user is stuck:
 
-Provide 2–3 hints maximum.
+Provide 2–3 hints maximum, each hint should be guiding and not giving away the answer.
 
 If still unable to solve:
 
